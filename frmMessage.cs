@@ -13,6 +13,7 @@ namespace LolChatWin
     public partial class frmMessage : Form
     {
         public JabberManager jm;
+        public ImageList Images;
         private User _theUser;
         public User theUser {
             get
@@ -23,9 +24,10 @@ namespace LolChatWin
             {
                 _theUser = value;
                 Text = theUser.Nickname;
-                if (theUser.Image != null)
+
+                if (Images.Images.ContainsKey(theUser.State))
                 {
-                    Icon = Icon.FromHandle(((Bitmap)theUser.Image).GetHicon());
+                    Icon = Icon.FromHandle(((Bitmap)Images.Images[theUser.State]).GetHicon());
                 }
             }
         }

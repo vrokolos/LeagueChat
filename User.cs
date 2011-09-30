@@ -84,6 +84,11 @@ namespace LolChatWin
         public string gameStatus { get { return _gameStatus; } set { _gameStatus = value; this.NotifyPropertyChanged("gameStatus"); } }
         public string timeStamp { get { return _timeStamp; } set { _timeStamp = value; this.NotifyPropertyChanged("timeStamp"); } }
         public string JID { get { return _JID; } set { _JID = value; } }
+        public void CalcDuration()
+        {
+            this.NotifyPropertyChanged("duration");
+        }
+
         public string duration
         {
             get
@@ -143,8 +148,14 @@ namespace LolChatWin
 
                             }
                         }
+
+                        isOnline = (Nickname == "");
                     }
-                    isOnline = (Nickname == "");
+                    else
+                    {
+
+                        isOnline = false;
+                    }
                     this.NotifyPropertyChanged("status");
                     this.NotifyPropertyChanged("profileImageUrl");
                     this.NotifyPropertyChanged("duration");

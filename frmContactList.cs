@@ -84,6 +84,7 @@ namespace LolChatWin
             else
             {
                 frmMessage newWindow = new frmMessage();
+                newWindow.Images = imgChamps;
                 newWindow.StartPosition = FormStartPosition.Manual;
                 newWindow.Location = new Point(SystemInformation.VirtualScreen.Width / 2 - 100 + msgWindows.Count * 30, SystemInformation.VirtualScreen.Height / 2 - 100 + msgWindows.Count * 30);
                 newWindow.theUser = From;
@@ -276,7 +277,7 @@ namespace LolChatWin
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Process.Start("http://vrokolos.github.com/LeagueChat/");
         }
 
     }

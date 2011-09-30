@@ -6,6 +6,7 @@ using jabber.client;
 using System.ComponentModel;
 using System.Security;
 using System.Security.Cryptography;
+using System.Timers;
 
 namespace LolChatWin
 {
@@ -25,6 +26,35 @@ namespace LolChatWin
         public event ConnectedHandler OnConnect;
         public event ConnectedHandler OnDisconnect;
 
+        Timer durationTimer = new Timer(30000); 
+        public JabberManager()
+        {
+            c.OnPresence += new PresenceHandler(c_OnPresence);
+            c.OnInvalidCertificate += new System.Net.Security.RemoteCertificateValidationCallback(c_OnInvalidCertificate);
+            k.OnRosterItem += new RosterItemHandler(k_OnRosterItem);
+            k.OnRosterEnd += new bedrock.ObjectHandler(k_OnRosterEnd);
+            c.OnMessage += new MessageHandler(c_OnMessage);
+            c.OnDisconnect += new bedrock.ObjectHandler(c_OnDisconnect);
+            c.OnAuthError += new jabber.protocol.ProtocolHandler(c_OnAuthError);
+            durationTimer.Elapsed += new ElapsedEventHandler(durationTimer_Elapsed);
+            durationTimer.Start();
+        }
+
+        void durationTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            foreach (var user in theUsers)
+            {
+
+                if (UserChanged != null)
+                {
+                    if (c.InvokeControl != null)
+                    {
+                        c.InvokeControl.Invoke(UserChanged,new object[]{ user });
+                    }
+
+                }
+            }
+        }
         public void Disconnect()
         {
             c.Close(true);
@@ -85,13 +115,12 @@ namespace LolChatWin
 
         public void Initialize(string username, string password, int server, ISynchronizeInvoke si )
         {
+
             c.InvokeControl = si;
-            c.OnPresence += new PresenceHandler(c_OnPresence);
             c.User = username;
             c.Password = "AIR_" + password;
             c.Port = 5223;
             c.SSL = true;
-            c.OnInvalidCertificate += new System.Net.Security.RemoteCertificateValidationCallback(c_OnInvalidCertificate);
             c.AutoRoster = true;
             c.AutoLogin = true;
             c.AutoPresence = true;
@@ -113,11 +142,6 @@ namespace LolChatWin
 
             users.Clear();
             theUsers.Clear();
-            k.OnRosterItem += new RosterItemHandler(k_OnRosterItem);
-            k.OnRosterEnd += new bedrock.ObjectHandler(k_OnRosterEnd);
-            c.OnMessage += new MessageHandler(c_OnMessage);
-            c.OnDisconnect += new bedrock.ObjectHandler(c_OnDisconnect);
-            c.OnAuthError += new jabber.protocol.ProtocolHandler(c_OnAuthError);
 
             c.Connect();
         }
@@ -145,6 +169,7 @@ namespace LolChatWin
 
         void k_OnRosterEnd(object sender)
         {
+
             if (OnConnect != null)
             {
                 OnConnect();
