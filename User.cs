@@ -60,7 +60,7 @@ namespace LolChatWin
                 {
                     return "inQueue";
                 }
-                else if (gameStatus != null)
+                else if ((gameStatus != null) && (skinname != null))
                 {
                     return skinname.Replace(".", "").Replace(" ", "-").Replace("`", "").Replace("'", "").ToLower();
                 }
@@ -149,7 +149,7 @@ namespace LolChatWin
                             }
                         }
 
-                        isOnline = (Nickname == "");
+                        isOnline = (Nickname != "");
                     }
                     else
                     {

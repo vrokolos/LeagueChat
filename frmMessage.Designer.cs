@@ -30,8 +30,8 @@
         {
             this.txtLog = new System.Windows.Forms.TextBox();
             this.pnlSpeak = new System.Windows.Forms.Panel();
-            this.btnSend = new System.Windows.Forms.Button();
             this.txtMessage = new System.Windows.Forms.TextBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.pnlSpeak.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +43,7 @@
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(284, 231);
+            this.txtLog.Size = new System.Drawing.Size(284, 237);
             this.txtLog.TabIndex = 1;
             this.txtLog.TabStop = false;
             // 
@@ -52,32 +52,32 @@
             this.pnlSpeak.Controls.Add(this.txtMessage);
             this.pnlSpeak.Controls.Add(this.btnSend);
             this.pnlSpeak.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlSpeak.Location = new System.Drawing.Point(0, 231);
+            this.pnlSpeak.Location = new System.Drawing.Point(0, 237);
             this.pnlSpeak.Name = "pnlSpeak";
-            this.pnlSpeak.Size = new System.Drawing.Size(284, 31);
+            this.pnlSpeak.Size = new System.Drawing.Size(284, 25);
             this.pnlSpeak.TabIndex = 2;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSend.Location = new System.Drawing.Point(238, 0);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(46, 31);
-            this.btnSend.TabIndex = 3;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
             // 
             // txtMessage
             // 
             this.txtMessage.BackColor = System.Drawing.SystemColors.Info;
             this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.txtMessage.Location = new System.Drawing.Point(0, 0);
-            this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(238, 31);
+            this.txtMessage.Size = new System.Drawing.Size(238, 24);
             this.txtMessage.TabIndex = 4;
             this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMessage_KeyPress);
+            // 
+            // btnSend
+            // 
+            this.btnSend.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSend.Location = new System.Drawing.Point(238, 0);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(46, 25);
+            this.btnSend.TabIndex = 3;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
             // 
             // frmMessage
             // 

@@ -178,7 +178,7 @@ namespace LolChatWin
 
         void c_OnMessage(object sender, jabber.protocol.client.Message msg)
         {
-            if (OnMessage != null)
+            if ((OnMessage != null) && (!msg.Body.StartsWith("<body>")))
             {
                 if (users.ContainsKey(msg.From.User))
                 {
@@ -191,10 +191,22 @@ namespace LolChatWin
 
             if (users.ContainsKey(ri.JID.User))
             {
-                User us = users[ri.JID.User];
-                us.Nickname = ri.Nickname;
-                us.Group = ri.GetGroups().First().GroupName;
-                us.item = ri;
+                if (ri.Subscription == jabber.protocol.iq.Subscription.remove)
+                {
+                    users[ri.JID.User].status = null;
+                    
+                    if (UserChanged != null)
+                        UserChanged(users[ri.JID.User]);
+                    users.Remove(ri.JID.User);
+
+                }
+                else
+                {
+                    User us = users[ri.JID.User];
+                    us.Nickname = ri.Nickname;
+                    us.Group = ri.GetGroups().First().GroupName;
+                    us.item = ri;
+                }
             }
             else
             {
@@ -205,7 +217,7 @@ namespace LolChatWin
 
         public void SendMessage(string text, User u)
         {
-            c.Message(u.JID, text);
+            c.Message(u.item.JID, text);
         }
 
         void c_OnPresence(object sender, jabber.protocol.client.Presence pres)
@@ -229,7 +241,7 @@ namespace LolChatWin
             }
             else
             {
-                users[pres.From.User].isOnline = true;
+                users[pres.From.User].isOnline = (users[pres.From.User].Nickname != "") ;
                 if (!theUsers.Contains(users[pres.From.User]))
                     theUsers.Add(users[pres.From.User]);
             }

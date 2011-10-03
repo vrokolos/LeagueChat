@@ -67,6 +67,7 @@ namespace LolChatWin
             if (txtMessage.Text != "")
             {
                 jm.SendMessage(txtMessage.Text, theUser);
+                txtLog.Text += ">>" + txtMessage.Text + Environment.NewLine;
                 txtMessage.Text = "";
             }
         }

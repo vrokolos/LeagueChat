@@ -110,12 +110,17 @@ namespace LolChatWin
 
         private void UpdateNode(User u)
         {
-            if (!u.isOnline)
-            {
+            if ( (!u.isOnline) || (u.status == null))
+            { 
                 if (lstBuddies.Items.ContainsKey(u.JID))
                 {
                     lstBuddies.Items.RemoveByKey(u.JID);
-                }
+
+                    if (jm.theUsers.Where(p => p.Group == u.Group).Count() == 1)
+                    {
+                        grps.Remove(u.Group);
+                    }
+                } 
             }
             else
             {

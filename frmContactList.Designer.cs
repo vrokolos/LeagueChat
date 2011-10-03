@@ -214,7 +214,7 @@
             this.Controls.Add(this.tsBuddies);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmContactList";
-            this.Text = "LolChat";
+            this.Text = "LeagueChat";
             this.Load += new System.EventHandler(this.frmContactList_Load);
             this.Move += new System.EventHandler(this.frmContactList_Move);
             this.Resize += new System.EventHandler(this.Form1_Resize);
