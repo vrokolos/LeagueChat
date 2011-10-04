@@ -230,6 +230,7 @@ namespace LolChatWin
             jm.OnMessage += new JabberManager.MsgHandler(jm_OnMessage);
             jm.OnConnect += new JabberManager.ConnectedHandler(jm_OnConnect);
             jm.OnDisconnect += new JabberManager.ConnectedHandler(jm_OnDisconnect);
+            jm.OnError += new JabberManager.ErrorHandler(jm_OnError);
             txtUsername.Text = Settings.Default.Username;
             txtPassword.Text = JabberManager.ToInsecureString(JabberManager.DecryptString(Settings.Default.Password));
             setServer(Settings.Default.Server);
@@ -243,6 +244,11 @@ namespace LolChatWin
                 btnDisconnect.Text = "Connect";
             }
 
+        }
+
+        void jm_OnError(string error)
+        {
+            MessageBox.Show(error,"Error");
         }
 
         void jm_OnDisconnect()

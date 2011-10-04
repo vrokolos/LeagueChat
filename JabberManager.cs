@@ -21,6 +21,8 @@ namespace LolChatWin
         public event UserChangedHandler UserChanged;
         public delegate void MsgHandler(User From, string message, DateTime Date);
         public event MsgHandler OnMessage;
+        public delegate void ErrorHandler(string error);
+        public event ErrorHandler OnError;
 
         public delegate void ConnectedHandler();
         public event ConnectedHandler OnConnect;
@@ -36,8 +38,16 @@ namespace LolChatWin
             c.OnMessage += new MessageHandler(c_OnMessage);
             c.OnDisconnect += new bedrock.ObjectHandler(c_OnDisconnect);
             c.OnAuthError += new jabber.protocol.ProtocolHandler(c_OnAuthError);
+            c.OnError += new bedrock.ExceptionHandler(c_OnError);
             durationTimer.Elapsed += new ElapsedEventHandler(durationTimer_Elapsed);
             durationTimer.Start();
+        }
+
+        void c_OnError(object sender, Exception ex)
+        {
+            if (OnError != null)
+            OnError(ex.Message);
+
         }
 
         void durationTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -153,6 +163,7 @@ namespace LolChatWin
 
         void c_OnAuthError(object sender, System.Xml.XmlElement rp)
         {
+            if (OnError != null) OnError("Wrong username or password");
             if (OnDisconnect != null)
             {
                 OnDisconnect();
