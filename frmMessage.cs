@@ -67,7 +67,9 @@ namespace LolChatWin
             if (txtMessage.Text != "")
             {
                 jm.SendMessage(txtMessage.Text, theUser);
-                txtLog.Text += ">>" + txtMessage.Text + Environment.NewLine;
+                txtLog.Text += ">> " + txtMessage.Text + Environment.NewLine;
+                txtLog.SelectionStart = txtLog.Text.Length;
+                txtLog.ScrollToCaret();
                 txtMessage.Text = "";
             }
         }
@@ -80,6 +82,11 @@ namespace LolChatWin
         private void frmMessage_Load(object sender, EventArgs e)
         {
             TaskbarManager.Instance.SetApplicationIdForSpecificWindow(Handle, Guid.NewGuid().ToString());
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            SendMessage();
         }
     }
 }

@@ -278,11 +278,18 @@ namespace LolChatWin
 
         private void frmContactList_Move(object sender, EventArgs e)
         {
-            if (Started && (WindowState == FormWindowState.Normal))
+            try
             {
-                Settings.Default.Top = Location.Y;
-                Settings.Default.Left = Location.X;
-                Settings.Default.Save();
+                if (Started && (WindowState == FormWindowState.Normal))
+                {
+                    Settings.Default.Top = Location.Y;
+                    Settings.Default.Left = Location.X;
+                    Settings.Default.Save();
+                }
+            }
+            catch
+            {
+
             }
         }
 

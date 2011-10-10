@@ -45,6 +45,7 @@
             this.tsBuddies = new System.Windows.Forms.ToolStrip();
             this.btnDisconnect = new System.Windows.Forms.ToolStripButton();
             this.btnAbout = new System.Windows.Forms.ToolStripButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pblConnect.SuspendLayout();
             this.tsBuddies.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             // pblConnect
             // 
+            this.pblConnect.Controls.Add(this.textBox1);
             this.pblConnect.Controls.Add(this.radioButton3);
             this.pblConnect.Controls.Add(this.radioButton2);
             this.pblConnect.Controls.Add(this.radioButton1);
@@ -66,9 +68,9 @@
             this.pblConnect.Controls.Add(this.txtUsername);
             this.pblConnect.Controls.Add(this.btnConnect);
             this.pblConnect.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pblConnect.Location = new System.Drawing.Point(0, 483);
+            this.pblConnect.Location = new System.Drawing.Point(0, 405);
             this.pblConnect.Name = "pblConnect";
-            this.pblConnect.Size = new System.Drawing.Size(321, 125);
+            this.pblConnect.Size = new System.Drawing.Size(321, 203);
             this.pblConnect.TabIndex = 10;
             this.pblConnect.Visible = false;
             // 
@@ -118,7 +120,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(82, 38);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(209, 20);
+            this.txtPassword.Size = new System.Drawing.Size(151, 20);
             this.txtPassword.TabIndex = 9;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -135,14 +137,14 @@
             // 
             this.txtUsername.Location = new System.Drawing.Point(82, 12);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(209, 20);
+            this.txtUsername.Size = new System.Drawing.Size(151, 20);
             this.txtUsername.TabIndex = 7;
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(121, 87);
+            this.btnConnect.Location = new System.Drawing.Point(243, 12);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 26);
+            this.btnConnect.Size = new System.Drawing.Size(61, 46);
             this.btnConnect.TabIndex = 6;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -165,7 +167,7 @@
             this.lstBuddies.Location = new System.Drawing.Point(0, 0);
             this.lstBuddies.MultiSelect = false;
             this.lstBuddies.Name = "lstBuddies";
-            this.lstBuddies.Size = new System.Drawing.Size(321, 483);
+            this.lstBuddies.Size = new System.Drawing.Size(321, 405);
             this.lstBuddies.SmallImageList = this.imgChamps;
             this.lstBuddies.TabIndex = 9;
             this.lstBuddies.TileSize = new System.Drawing.Size(300, 64);
@@ -203,6 +205,18 @@
             this.btnAbout.Size = new System.Drawing.Size(60, 22);
             this.btnAbout.Text = "About";
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.textBox1.Location = new System.Drawing.Point(12, 96);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(297, 104);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // frmContactList
             // 
@@ -244,6 +258,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
